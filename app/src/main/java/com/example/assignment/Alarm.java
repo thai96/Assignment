@@ -1,5 +1,15 @@
 package com.example.assignment;
 
+import static com.example.assignment.AlarmBroadcastReceiver.FRIDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.MONDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.RECURRING;
+import static com.example.assignment.AlarmBroadcastReceiver.SATURDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.SUNDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.THURSDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.TITLE;
+import static com.example.assignment.AlarmBroadcastReceiver.TUESDAY;
+import static com.example.assignment.AlarmBroadcastReceiver.WEDNESDAY;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -43,7 +53,7 @@ public class Alarm {
         this.title = title;
     }
 
-    public void schedule(Context context){
+    public void schedule(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(context, AlarmBroadcastReceiver.class);
@@ -103,16 +113,16 @@ public class Alarm {
         this.started = true;
     }
 
-    private String getRecurringDaysText(){
+    private String getRecurringDaysText() {
         String text = "";
-        if(monday) text += "Monday ";
-        if(tuesday) text += "Tuesday ";
-        if(wednesday) text += "Wednesday ";
-        if(thursday) text += "Thursday " ;
-        if(friday) text += "Friday ";
-        if(saturday) text += "Saturday ";
-        if(sunday) text += "Sunday " ;
+        if (monday) text += "Monday ";
+        if (tuesday) text += "Tuesday ";
+        if (wednesday) text += "Wednesday ";
+        if (thursday) text += "Thursday ";
+        if (friday) text += "Friday ";
+        if (saturday) text += "Saturday ";
+        if (sunday) text += "Sunday ";
 
         return text;
-     }
+    }
 }

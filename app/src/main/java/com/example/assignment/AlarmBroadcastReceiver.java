@@ -10,7 +10,7 @@ import com.example.assignment.service.AlarmService;
 import com.example.assignment.service.RescheduleAlarmsService;
 
 import java.util.Calendar;
-
+//ck
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
     public static final String MONDAY = "MONDAY";
@@ -69,19 +69,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     private void startAlarmService(Context context, Intent intent) {
         Intent intentService = new Intent(context, AlarmService.class);
         intentService.putExtra(TITLE,intent.getStringExtra(TITLE));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intentService);
-        } else {
-            context.startService(intentService);
-        }
+        context.startForegroundService(intentService);
     }
 
     private void startRescheduleAlarmsService(Context context) {
         Intent intentService = new Intent(context, RescheduleAlarmsService.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intentService);
-        } else {
-            context.startService(intentService);
-        }
+        context.startForegroundService(intentService);
     }
 }
