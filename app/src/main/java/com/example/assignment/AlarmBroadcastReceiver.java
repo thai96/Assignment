@@ -3,9 +3,11 @@ package com.example.assignment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.CaseMap;
 import android.os.Build;
 import android.widget.Toast;
+
+import com.example.assignment.service.AlarmService;
+import com.example.assignment.service.RescheduleAlarmsService;
 
 import java.util.Calendar;
 
@@ -65,7 +67,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void startAlarmService(Context context, Intent intent) {
-        Intent intentService = new Intent(context,AlarmService.class);
+        Intent intentService = new Intent(context, AlarmService.class);
         intentService.putExtra(TITLE,intent.getStringExtra(TITLE));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intentService);
