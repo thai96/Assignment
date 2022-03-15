@@ -1,4 +1,4 @@
-package com.example.assignment;
+package com.example.assignment.create_alarm;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -15,8 +15,10 @@ import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+
+import com.example.assignment.data.Alarm;
+import com.example.assignment.R;
 
 import java.util.Random;
 

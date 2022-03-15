@@ -1,4 +1,4 @@
-package com.example.assignment;
+package com.example.assignment.data;
 
 import static com.example.assignment.AlarmBroadcastReceiver.FRIDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.MONDAY;
@@ -10,16 +10,21 @@ import static com.example.assignment.AlarmBroadcastReceiver.TITLE;
 import static com.example.assignment.AlarmBroadcastReceiver.TUESDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.WEDNESDAY;
 
+import static java.lang.String.format;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.assignment.AlarmBroadcastReceiver;
 
 import java.util.Calendar;
 
@@ -86,7 +91,7 @@ public class Alarm {
         if (!recurring) {
             String toastText = null;
             try {
-                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DateUtils.isToday(calendar.get(Calendar.DAY_OF_WEEK)), hour, minute, alarmId);
+                toastText = format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DateUtils.isToday(calendar.get(Calendar.DAY_OF_WEEK)), hour, minute, alarmId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -98,7 +103,7 @@ public class Alarm {
                     alarmPendingIntent
             );
         } else {
-            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysText(), hour, minute, alarmId);
+            String toastText = format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysText(), hour, minute, alarmId);
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
 
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
@@ -124,5 +129,17 @@ public class Alarm {
         if (sunday) text += "Sunday ";
 
         return text;
+    }
+
+    public void cancelAlarm(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmBroadcastReceiver.class);
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmId, intent, 0);
+        alarmManager.cancel(alarmPendingIntent);
+        this.started = false;
+
+        String toastText = format("Alarm cancelled for %02d:%02d with id %d", hour, minute, alarmId);
+        Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
+        Log.i("cancel", toastText);
     }
 }
