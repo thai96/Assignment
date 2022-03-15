@@ -145,7 +145,6 @@ public class CreateAlarmFragment extends Fragment {
                 sun.isChecked(),
                 toneMap.get(toneChooser.getSelectedItem().toString())
         );
-        Toast.makeText(getContext(),toneMap.get(toneChooser.getSelectedItem().toString()).toString(),Toast.LENGTH_SHORT).show();
 
         createAlarmViewModel.insert(alarm);
 
@@ -157,7 +156,6 @@ public class CreateAlarmFragment extends Fragment {
         for(int count=0; count < fields.length; count++){
             String filename = fields[count].getName();
             int id = getResources().getIdentifier(filename, "raw", requireActivity().getPackageName());
-            Log.d("Thai",id + "");
             toneMap.put(filename,id);
             musicList.add(filename);
         }
