@@ -60,7 +60,8 @@ public class RingActivity extends AppCompatActivity {
                         false,
                         false,
                         false,
-                        false
+                        false,
+                        R.raw.duck
                 );
 
                 alarm.schedule(getApplicationContext());

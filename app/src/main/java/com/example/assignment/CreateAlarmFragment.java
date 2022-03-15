@@ -1,6 +1,7 @@
 package com.example.assignment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -143,6 +145,7 @@ public class CreateAlarmFragment extends Fragment {
                 sun.isChecked(),
                 toneMap.get(toneChooser.getSelectedItem().toString())
         );
+        Toast.makeText(getContext(),toneMap.get(toneChooser.getSelectedItem().toString()).toString(),Toast.LENGTH_SHORT).show();
 
         createAlarmViewModel.insert(alarm);
 
@@ -153,10 +156,10 @@ public class CreateAlarmFragment extends Fragment {
         Field[] fields=R.raw.class.getFields();
         for(int count=0; count < fields.length; count++){
             String filename = fields[count].getName();
-            int id = getResources().getIdentifier(filename, "raw", " com.example.assignment");
-
+            int id = getResources().getIdentifier(filename, "raw", requireActivity().getPackageName());
+            Log.d("Thai",id + "");
             toneMap.put(filename,id);
-            musicList.add(fields[count].getName());
+            musicList.add(filename);
         }
     }
 

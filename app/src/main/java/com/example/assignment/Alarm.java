@@ -150,6 +150,14 @@ public class Alarm {
         Log.i("cancel", toastText);
     }
 
+    public int getToneFileId() {
+        return toneFileId;
+    }
+
+    public void setToneFileId(int toneFileId) {
+        this.toneFileId = toneFileId;
+    }
+
     public int getHour() {
         return hour;
     }
