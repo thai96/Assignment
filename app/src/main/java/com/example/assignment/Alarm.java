@@ -118,7 +118,7 @@ public class Alarm {
         this.started = true;
     }
 
-    private String getRecurringDaysText() {
+    public String getRecurringDaysText() {
         String text = "";
         if (monday) text += "Monday ";
         if (tuesday) text += "Tuesday ";
@@ -141,5 +141,70 @@ public class Alarm {
         String toastText = format("Alarm cancelled for %02d:%02d with id %d", hour, minute, alarmId);
         Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
         Log.i("cancel", toastText);
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public int getAlarmId() {
+        return alarmId;
+    }
+
+    public void setAlarmId(int alarmId) {
+        this.alarmId = alarmId;
+    }
+
+    public boolean isRecurring() {
+        return recurring;
+    }
+
+    public boolean isMonday() {
+        return monday;
+    }
+
+    public boolean isTuesday() {
+        return tuesday;
+    }
+
+    public boolean isWednesday() {
+        return wednesday;
+    }
+
+    public boolean isThursday() {
+        return thursday;
+    }
+
+    public boolean isFriday() {
+        return friday;
+    }
+
+    public boolean isSaturday() {
+        return saturday;
+    }
+
+    public boolean isSunday() {
+        return sunday;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+    private long created;
+
+    public long getCreated() {
+        return created;
+    }
+
+    public void setCreated(long created) {
+        this.created = created;
     }
 }
