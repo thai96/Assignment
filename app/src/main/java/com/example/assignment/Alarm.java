@@ -91,7 +91,7 @@ public class Alarm {
         if (!recurring) {
             String toastText = null;
             try {
-                toastText = format("One Time Alarm %s scheduled for %s at %02d:%02d", title, DateUtils.isToday(calendar.get(Calendar.DAY_OF_WEEK)), hour, minute, alarmId);
+                toastText = format("One Time Alarm %s scheduled at %02d:%02d", title, hour, minute, alarmId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,7 +103,7 @@ public class Alarm {
                     alarmPendingIntent
             );
         } else {
-            String toastText = format("Recurring Alarm %s scheduled for %s at %02d:%02d", title, getRecurringDaysText(), hour, minute, alarmId);
+            String toastText = format("Recurring Alarm %s scheduled %s at %02d:%02d", title, getRecurringDaysText(), hour, minute, alarmId);
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
 
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
@@ -119,7 +119,7 @@ public class Alarm {
     }
 
     public String getRecurringDaysText() {
-        String text = "";
+        String text = "for ";
         if (monday) text += "Monday ";
         if (tuesday) text += "Tuesday ";
         if (wednesday) text += "Wednesday ";
@@ -128,6 +128,9 @@ public class Alarm {
         if (saturday) text += "Saturday ";
         if (sunday) text += "Sunday ";
 
+        if(text.equals("for ")){
+            return "";
+        }
         return text;
     }
 
