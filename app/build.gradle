@@ -55,6 +55,5 @@ dependencies {
 
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
-    implementation "android.arch.lifecycle:extensions:1.1.0"
-    implementation "android.arch.lifecycle:viewmodel:1.1.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 }
