@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -51,6 +50,14 @@
             android:hint="Alarm Title"
             app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_timePickerLayout" />
 
+        <Spinner
+            android:id="@+id/fragment_createalarm_tonechooser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_title" />
+
         <CheckBox
             android:id="@+id/fragment_createalarm_recurring"
             android:layout_width="match_parent"
@@ -58,7 +65,7 @@
             android:checked="false"
             android:text="Recurring Alarm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_title" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_createalarm_tonechooser" />
 
         <LinearLayout
             android:id="@+id/fragment_createalarm_recurring_options"
@@ -109,7 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sun" />
-
         </LinearLayout>
 
         <Button

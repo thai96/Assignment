@@ -7,6 +7,7 @@ import static com.example.assignment.AlarmBroadcastReceiver.SATURDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.SUNDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.THURSDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.TITLE;
+import static com.example.assignment.AlarmBroadcastReceiver.TONE_ID;
 import static com.example.assignment.AlarmBroadcastReceiver.TUESDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.WEDNESDAY;
 
@@ -38,8 +39,9 @@ public class Alarm {
     private boolean started, recurring;
     private boolean monday, tuesday, wednesday, thursday, friday, saturday, sunday;
     private String title;
+    private int toneFileId;
 
-    public Alarm(int alarmId, int hour, int minute, String title, boolean started, boolean recurring, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+    public Alarm(int alarmId, int hour, int minute, String title, boolean started, boolean recurring, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, int toneFileId) {
         this.alarmId = alarmId;
         this.hour = hour;
         this.minute = minute;
@@ -56,6 +58,7 @@ public class Alarm {
         this.sunday = sunday;
 
         this.title = title;
+        this.toneFileId = toneFileId;
     }
 
     public void schedule(Context context) {
@@ -70,6 +73,7 @@ public class Alarm {
         intent.putExtra(FRIDAY, friday);
         intent.putExtra(SATURDAY, saturday);
         intent.putExtra(SUNDAY, sunday);
+        intent.putExtra(TONE_ID,toneFileId);
 
         intent.putExtra(TITLE, title);
 
@@ -198,6 +202,7 @@ public class Alarm {
     public String getTitle() {
         return title;
     }
+
     private long created;
 
     public long getCreated() {

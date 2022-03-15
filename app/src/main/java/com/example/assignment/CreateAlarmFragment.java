@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
@@ -19,7 +21,13 @@ import androidx.navigation.Navigation;
 
 import com.example.assignment.viewModels.CreateAlarmViewModel;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,6 +70,12 @@ public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_recurring_options)
     LinearLayout recurringOptions;
 
+    @BindView(R.id.fragment_createalarm_tonechooser)
+    Spinner toneChooser;
+
+    Map<String, Integer> toneMap = new HashMap<String, Integer>() ;
+    ArrayList<String> musicList = new ArrayList<String>();
+
     private CreateAlarmViewModel createAlarmViewModel;
 
     @Override
@@ -69,6 +83,7 @@ public class CreateAlarmFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         createAlarmViewModel = ViewModelProviders.of(this).get(CreateAlarmViewModel.class);
+        listRaw();
     }
 
     @Nullable
@@ -100,6 +115,15 @@ public class CreateAlarmFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, musicList);
+
+        toneChooser.setAdapter(adapter);
+    }
+
     private void scheduleAlarm() {
         int alarmId = new Random().nextInt(Integer.MAX_VALUE);
 
@@ -116,12 +140,24 @@ public class CreateAlarmFragment extends Fragment {
                 thu.isChecked(),
                 fri.isChecked(),
                 sat.isChecked(),
-                sun.isChecked()
+                sun.isChecked(),
+                toneMap.get(toneChooser.getSelectedItem().toString())
         );
 
         createAlarmViewModel.insert(alarm);
 
         alarm.schedule(getContext());
+    }
+
+    public void listRaw(){
+        Field[] fields=R.raw.class.getFields();
+        for(int count=0; count < fields.length; count++){
+            String filename = fields[count].getName();
+            int id = getResources().getIdentifier(filename, "raw", " com.example.assignment");
+
+            toneMap.put(filename,id);
+            musicList.add(fields[count].getName());
+        }
     }
 
 }

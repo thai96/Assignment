@@ -22,6 +22,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     public static final String SUNDAY = "SUNDAY";
     public static final String RECURRING = "RECURRING";
     public static final String TITLE = "TITLE";
+    public static final String TONE_ID = "TONE_ID";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -69,6 +70,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
     private void startAlarmService(Context context, Intent intent) {
         Intent intentService = new Intent(context, AlarmService.class);
         intentService.putExtra(TITLE,intent.getStringExtra(TITLE));
+        intentService.putExtra(TONE_ID, intent.getIntExtra(TONE_ID, R.raw.duck));
         context.startForegroundService(intentService);
     }
 

@@ -10,6 +10,9 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_clock.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_dismiss.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_snooze.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/fragment_alarm_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/fragment_createalarm.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/item_alarm.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>

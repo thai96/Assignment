@@ -1,6 +1,7 @@
 package com.example.assignment.service;
 
 import static com.example.assignment.AlarmBroadcastReceiver.TITLE;
+import static com.example.assignment.AlarmBroadcastReceiver.TONE_ID;
 import static com.example.assignment.application.App.CHANNEL_ID;
 
 import android.app.Notification;
@@ -35,9 +36,6 @@ public class AlarmService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mediaPlayer = MediaPlayer.create(this, R.raw.duck);
-        mediaPlayer.setLooping(true);
-        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -59,6 +57,11 @@ public class AlarmService extends Service {
                 .setContentIntent(pendingIntent)
                 .build();
 
+        int toneId = intent.getIntExtra(TONE_ID,R.raw.duck);
+
+        mediaPlayer = MediaPlayer.create(this, toneId);
+        mediaPlayer.setLooping(true);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         mediaPlayer.start();
         long[] pattern = {0, 100, 1000};
         vibrator.vibrate(VibrationEffect.createWaveform(pattern, 0));
