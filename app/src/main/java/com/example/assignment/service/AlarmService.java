@@ -52,20 +52,27 @@ public class AlarmService extends Service {
                 notificationIntent, 0);
         String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                .setContentTitle(alarmTitle)
+//                .setContentText("Wake up motherfucker")
+//                .setSmallIcon(R.drawable.baseline_alarm_24)
+//                .setContentIntent(pendingIntent);
+        Notification notification =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(alarmTitle)
                 .setContentText("Wake up motherfucker")
                 .setSmallIcon(R.drawable.baseline_alarm_24)
-                .setContentIntent(pendingIntent);
+                        .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setContentIntent(pendingIntent).build();
 
         mediaPlayer.start();
         long[] pattern = {0, 100, 1000};
         vibrator.vibrate(VibrationEffect.createWaveform(pattern, 0));
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-// notificationId is a unique int for each notification that you must define
-        notificationManager.notify(1, builder.build());
-//        startForeground(1, notification);
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+//
+//// notificationId is a unique int for each notification that you must define
+//        notificationManager.notify(1, builder.build());
+        startForeground(1, notification);
         return START_STICKY;
     }
 
