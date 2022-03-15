@@ -1,12 +1,12 @@
 package com.example.assignment.alarms_list;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment.Alarm;

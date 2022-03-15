@@ -12,9 +12,11 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.support.v4.app.NotificationCompat;
+
+import androidx.core.app.NotificationCompat;
 
 import com.example.assignment.R;
+import com.example.assignment.RingActivity;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;

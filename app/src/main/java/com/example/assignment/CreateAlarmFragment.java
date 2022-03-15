@@ -1,6 +1,5 @@
 package com.example.assignment;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,10 @@ import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
+
+import com.example.assignment.viewModels.CreateAlarmViewModel;
 
 import java.util.Random;
 
