@@ -24,12 +24,15 @@ public class App extends Application {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private String createNotificationChannel(String channelId,String channelName){
-        NotificationChannel chan = new NotificationChannel(channelId,
-                channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        NotificationManager service =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE) ;
-        service.createNotificationChannel(chan);
-        return channelId;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            mChannel.setDescription("Alarm");
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+        return CHANNEL_ID;
     }
 }
