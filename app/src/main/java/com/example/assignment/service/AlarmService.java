@@ -4,15 +4,20 @@ import static com.example.assignment.AlarmBroadcastReceiver.TITLE;
 import static com.example.assignment.application.App.CHANNEL_ID;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.example.assignment.R;
@@ -66,4 +71,5 @@ public class AlarmService extends Service {
         mediaPlayer.stop();
         vibrator.cancel();
     }
+
 }
