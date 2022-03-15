@@ -1,4 +1,4 @@
-package com.example.assignment.create_alarm;
+package com.example.assignment;
 
 import android.os.Build;
 import android.widget.TimePicker;

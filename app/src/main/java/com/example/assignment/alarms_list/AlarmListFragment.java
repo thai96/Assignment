@@ -1,8 +1,12 @@
 package com.example.assignment.alarms_list;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.assignment.data.Alarm;
+import com.example.assignment.Alarm;
 import com.example.assignment.R;
 
 import java.util.List;
@@ -77,11 +81,30 @@ public class AlarmListFragment extends Fragment implements OnToggleAlarmListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alarm_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_alarm_list, container, false);
+
+        alarmsRecyclerView = view.findViewById(R.id.fragment_listalarms_recylerView);
+        alarmsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        alarmsRecyclerView.setAdapter(alarmRecyclerViewAdapter);
+
+        addAlarm = view.findViewById(R.id.fragment_listalarms_addAlarm);
+        addAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_alarmsListFragment_to_createAlarmFragment);
+            }
+        });
+        return view;
     }
 
     @Override
     public void onToggle(Alarm alarm) {
-
+        if (alarm.isStarted()) {
+            alarm.cancelAlarm(getContext());
+            alarmsListViewModel.update(alarm);
+        } else {
+            alarm.schedule(getContext());
+            alarmsListViewModel.update(alarm);
+        }
     }
 }

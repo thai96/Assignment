@@ -1,4 +1,4 @@
-package com.example.assignment.data;
+package com.example.assignment;
 
 import static com.example.assignment.AlarmBroadcastReceiver.FRIDAY;
 import static com.example.assignment.AlarmBroadcastReceiver.MONDAY;
