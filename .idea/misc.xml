@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/drawable/baseline_more_vert_24.xml" value="0.222" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/activity_main.xml" value="0.1408514492753623" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/activity_ring.xml" value="0.1408514492753623" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/fragment_alarm_list.xml" value="0.264" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/fragment_createalarm.xml" value="0.2" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/item2.xml" value="0.264" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/layout/item_alarm.xml" value="0.5275459098497496" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.222" />
+        <entry key="..\:/Study/Programming/Mobile_Programming/Assignment/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.222" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/drawable/baseline_alarm_24.xml" value="0.121" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/drawable/ic_alarm_black_24dp.xml" value="0.121" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
@@ -10,9 +19,6 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_clock.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_dismiss.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/activity_ring_snooze.xml" value="0.10989583333333333" />
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/fragment_alarm_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/fragment_createalarm.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/Assignment/app/src/main/res/layout/item_alarm.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>

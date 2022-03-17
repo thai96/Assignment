@@ -3,13 +3,13 @@ package com.example.assignment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.widget.Toast;
 
 import com.example.assignment.service.AlarmService;
 import com.example.assignment.service.RescheduleAlarmsService;
 
 import java.util.Calendar;
+
 //ck
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
@@ -35,11 +35,8 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
             Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
             if (!intent.getBooleanExtra(RECURRING, false)) {
                 startAlarmService(context, intent);
-            }
-            {
-                if (alarmIsToday(intent)) {
-                    startAlarmService(context, intent);
-                }
+            } else if (alarmIsToday(intent)) {
+                startAlarmService(context, intent);
             }
         }
     }
@@ -69,7 +66,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
     private void startAlarmService(Context context, Intent intent) {
         Intent intentService = new Intent(context, AlarmService.class);
-        intentService.putExtra(TITLE,intent.getStringExtra(TITLE));
+        intentService.putExtra(TITLE, intent.getStringExtra(TITLE));
         intentService.putExtra(TONE_ID, intent.getIntExtra(TONE_ID, R.raw.duck));
         context.startForegroundService(intentService);
     }

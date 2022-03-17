@@ -1,7 +1,6 @@
 package com.example.assignment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,11 +23,9 @@ import com.example.assignment.viewModels.CreateAlarmViewModel;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +37,9 @@ public class CreateAlarmFragment extends Fragment {
 
     @BindView(R.id.fragment_createalarm_title)
     EditText title;
+
+    @BindView(R.id.cancelButton)
+    Button cancelButton;
 
     @BindView(R.id.fragment_createalarm_scheduleAlarm)
     Button scheduleAlarm;
@@ -75,13 +74,13 @@ public class CreateAlarmFragment extends Fragment {
     @BindView(R.id.fragment_createalarm_tonechooser)
     Spinner toneChooser;
 
-    Map<String, Integer> toneMap = new HashMap<String, Integer>() ;
+    Map<String, Integer> toneMap = new HashMap<String, Integer>();
     ArrayList<String> musicList = new ArrayList<String>();
 
     private CreateAlarmViewModel createAlarmViewModel;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         createAlarmViewModel = ViewModelProviders.of(this).get(CreateAlarmViewModel.class);
@@ -108,11 +107,18 @@ public class CreateAlarmFragment extends Fragment {
 
         scheduleAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 scheduleAlarm();
-                Navigation.findNavController(v).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
+                Navigation.findNavController(view).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
             }
         });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_createAlarmFragment_to_alarmsListFragment);
+            }
+        });
+
 
         return view;
     }
@@ -151,12 +157,12 @@ public class CreateAlarmFragment extends Fragment {
         alarm.schedule(getContext());
     }
 
-    public void listRaw(){
-        Field[] fields=R.raw.class.getFields();
-        for(int count=0; count < fields.length; count++){
+    public void listRaw() {
+        Field[] fields = R.raw.class.getFields();
+        for (int count = 0; count < fields.length; count++) {
             String filename = fields[count].getName();
             int id = getResources().getIdentifier(filename, "raw", requireActivity().getPackageName());
-            toneMap.put(filename,id);
+            toneMap.put(filename, id);
             musicList.add(filename);
         }
     }
