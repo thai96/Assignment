@@ -34,9 +34,12 @@ public class RingActivity extends AppCompatActivity {
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentService = new Intent(getApplicationContext(), AlarmService.class);
-                getApplicationContext().stopService(intentService);
+                Intent intentService = new Intent(RingActivity.this, PuzzleActivity.class);
+                startActivity(intentService);
                 finish();
+//                Intent intentService = new Intent(getApplicationContext(), AlarmService.class);
+//                getApplicationContext().stopService(intentService);
+//                finish();
             }
         });
 
